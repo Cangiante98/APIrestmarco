@@ -14,6 +14,6 @@ authorAvatar: 'https://avatars1.githubusercontent.com/u/13742415?s=200&v=4'
 
 La difficoltà più grande è stata quella di studiare in linea generale aws e i suoi tools; Molte delle cose che ho scritto all'interno del codice sono dettate da documetazione e non approfondite nel poco tempo che ho avuto a disposizione.
 
-Enjoy!
+enjoy!
 
 marco De Giglio
