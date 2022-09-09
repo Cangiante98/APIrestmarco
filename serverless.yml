@@ -1,0 +1,44 @@
+service: OmninextAPImarco   #nome servizio
+frameworkVersion: '3'     #versione del framework
+
+provider:
+  name: aws                   # Default stage (default: dev)
+  runtime: python3.8         #lenguage
+
+functions:  #funzioi
+
+  getIdUser:                     #nome funzione
+    handler: handler.getIdUser   #path gestore
+    events:
+      - httpApi:
+          path: /product/{id}   
+          method: get                #evento GET
+
+  setUser:
+    handler: handler.setUser
+    events:
+      - httpApi:
+          path: /product
+          method: post               #evento POST
+
+
+#CREO TABELLA:"tabellaUtente"
+resources: # CloudFormation template syntax from here on.
+  Resources:
+    tabellaUtente:
+      Type: AWS::DynamoDB::Table
+      Properties:                       #proprietà tabella
+        TableName: tabellaUtente
+        AttributeDefinitions:
+          - AttributeName: id           #id int primary key
+            AttributeType: N
+          - AttributeName: nome         #nome string 
+            AttributeType: S
+        KeySchema:
+          - AttributeName: id 
+            KeyType: HASH
+          - AttributeName: nome
+            KeyType: RANGE
+        ProvisionedThroughput:
+          ReadCapacityUnits: 1
+          WriteCapacityUnits: 1
